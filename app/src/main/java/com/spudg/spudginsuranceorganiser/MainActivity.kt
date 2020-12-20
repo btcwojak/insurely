@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         alarmManager.set(
             AlarmManager.RTC_WAKEUP,
-            System.currentTimeMillis() + 1209600000,
+            System.currentTimeMillis(),
             pendingIntent
         )
 
