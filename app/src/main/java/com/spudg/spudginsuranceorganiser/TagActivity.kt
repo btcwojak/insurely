@@ -96,7 +96,7 @@ class TagActivity : AppCompatActivity() {
     fun updateTag(tag: TagModel) {
         val updateDialog = Dialog(this, R.style.Theme_Dialog)
         updateDialog.setCancelable(false)
-        updateDialog.setContentView(R.layout.dialog_update_policy)
+        updateDialog.setContentView(R.layout.dialog_update_tag)
         updateDialog.window!!.setBackgroundDrawable(ColorDrawable(TRANSPARENT))
 
         updateDialog.etNameLayoutUpdateTag.etNameUpdateTag.setText(tag.name)

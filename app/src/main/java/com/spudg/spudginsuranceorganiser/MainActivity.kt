@@ -99,6 +99,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         return result
     }
 
+    fun getPolicyTagColour(tagId: Int): Int {
+        val dbHandler = TagHandler(this, null)
+        val result = dbHandler.getTagColour(tagId)
+        dbHandler.close()
+        return result
+    }
+
     private fun addPolicy() {
         val addDialog = Dialog(this, R.style.Theme_Dialog)
         addDialog.setCancelable(false)

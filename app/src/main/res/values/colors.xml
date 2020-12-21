@@ -4,8 +4,4 @@
     <color name="colorPrimaryDark">#BCBCBC</color>
     <color name="colorPrimaryLight">#FFFFFF</color>
     <color name="colorAccent">#673AB7</color>
-    <color name="lineForAmber">#d1930f</color>
-    <color name="lineForBlack">#3b3b3b</color>
-    <color name="lineForGreen">#00c216</color>
-    <color name="lineForRed">#bf0000</color>
 </resources>

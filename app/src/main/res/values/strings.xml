@@ -42,7 +42,7 @@
     <string name="name">Name</string>
     <string name="update">Update</string>
     <string name="cancel">Cancel</string>
-    <string name="policy_expiration_placeholder">Policy expires on 23 Nov 2021\n(Bi-monthly)</string>
+    <string name="policy_expiration_placeholder">Policy expires on 23 Nov 2021</string>
     <string name="insurance_provider_placeholder">Admiral insurance</string>
     <string name="renewal_time_placeholder">Up for renewal in 285 days</string>
     <string name="default_tag">Default tag</string>
