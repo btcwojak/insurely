@@ -33,11 +33,11 @@
         <LinearLayout
             android:id="@+id/policy_tag_layout_add"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_weight="8"
+            android:layout_marginTop="6dp"
             android:background="@drawable/dropdown_border">
 
             <Spinner
@@ -49,26 +49,6 @@
                 android:spinnerMode="dropdown" />
 
         </LinearLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/policy_price_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="8">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/policy_price_et"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/open_sans_light"
-                android:hint="@string/price"
-                android:inputType="numberDecimal" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
@@ -132,22 +112,48 @@
         android:textSize="16sp" />
 
     <LinearLayout
-        android:id="@+id/policy_frequency_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/dropdown_border">
+        android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/policy_frequency_spinner_add"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:overlapAnchor="false"
-            android:spinnerMode="dropdown" />
+        <LinearLayout
+            android:id="@+id/policy_frequency_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_weight="2"
+            android:background="@drawable/dropdown_border">
+
+            <Spinner
+                android:id="@+id/policy_frequency_spinner_add"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:overlapAnchor="false"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/policy_price_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/policy_price_et"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/open_sans_light"
+                android:hint="@string/price"
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
