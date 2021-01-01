@@ -1,6 +1,7 @@
 package com.spudg.spudginsuranceorganiser
 
 import android.app.*
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -21,7 +22,9 @@ import kotlinx.android.synthetic.main.dialog_add_policy.view.*
 import kotlinx.android.synthetic.main.dialog_delete_policy.*
 import kotlinx.android.synthetic.main.dialog_update_policy.*
 import kotlinx.android.synthetic.main.dialog_update_policy.view.*
+import java.text.SimpleDateFormat
 import java.util.*
+
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -49,16 +52,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         setUpPolicyList()
         checkDefaultTags()
-
-        // Notification setting
-        val intent = Intent(this, PolicyCheckReminder::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
-        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
-        alarmManager.set(
-            AlarmManager.RTC_WAKEUP,
-            System.currentTimeMillis() + 1209600000,
-            pendingIntent
-        )
 
     }
 
@@ -215,7 +208,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             override fun afterTextChanged(arg0: Editable) {
                 val str = addDialog.policy_price_layout.policy_price_et.text.toString()
                 if (str.isEmpty()) return
-                val str2: String = currencyInputFilter(str, 6, 2)
+                val str2: String = currencyInputFilter(str, 4, 2)
                 if (str2 != str) {
                     addDialog.policy_price_layout.policy_price_et.setText(str2)
                     addDialog.policy_price_layout.policy_price_et.setSelection(str2.length)
@@ -240,29 +233,49 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             val dbHandlerPolicies = PolicyHandler(this, null)
             val dbHandlerTags = TagHandler(this, null)
 
+            // For request code
+            val minuteForRC = Calendar.getInstance()[Calendar.MINUTE]
+            val hourForRC = Calendar.getInstance()[Calendar.HOUR]
+            val dayForRC = Calendar.getInstance()[Calendar.DAY_OF_YEAR]
+            val yearForRC = Calendar.getInstance()[Calendar.YEAR].toString().takeLast(2)
+
             val tag = dbHandlerTags.getTagId(selectedTag)
             val price = addDialog.policy_price_layout.policy_price_et.text.toString()
             val note = addDialog.etNoteLayoutAddPolicy.etNoteAddPolicy.text.toString()
-            val month = monthPicked
-            val oGDay = dayPicked
-            val day = dayPicked
-            val year = yearPicked
+            val nextMonth = monthPicked
+            val notifRC = "$minuteForRC$hourForRC$dayForRC$yearForRC".toInt()
+            val nextDay = dayPicked
+            val nextYear = yearPicked
             val frequency = selectedFrequency
 
             if (selectedFrequency.isNotEmpty() && price.isNotEmpty() && note.isNotEmpty()) {
                 dbHandlerPolicies.addPolicy(
-                    PolicyModel(
-                        0,
-                        note,
-                        tag,
-                        price,
-                        month,
-                        oGDay,
-                        day,
-                        year,
-                        "",
-                        frequency
-                    )
+                        PolicyModel(
+                                0,
+                                note,
+                                tag,
+                                price,
+                                nextMonth,
+                                notifRC,
+                                nextDay,
+                                nextYear,
+                                "",
+                                frequency
+                        )
+                )
+
+                // Notification setting
+                val strDate = "${nextDay}-${nextMonth}-${nextYear}"
+                val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                val nextDateMillis = sdf.parse(strDate)?.time
+
+                val intent = Intent(this, PolicyCheckReminder::class.java)
+                val pendingIntent = PendingIntent.getBroadcast(this, notifRC, intent, 0)
+                val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+                alarmManager.set(
+                        AlarmManager.RTC_WAKEUP,
+                        nextDateMillis!! - 86400000,
+                        pendingIntent
                 )
 
                 Toast.makeText(this, "Policy added.", Toast.LENGTH_LONG).show()
@@ -389,14 +402,14 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         updateDialog.policy_price_layout_update.policy_price_et_update.addTextChangedListener(object :
-            TextWatcher {
+                TextWatcher {
             override fun onTextChanged(arg0: CharSequence, arg1: Int, arg2: Int, arg3: Int) {}
             override fun beforeTextChanged(arg0: CharSequence, arg1: Int, arg2: Int, arg3: Int) {}
             override fun afterTextChanged(arg0: Editable) {
                 val str =
-                    updateDialog.policy_price_layout_update.policy_price_et_update.text.toString()
+                        updateDialog.policy_price_layout_update.policy_price_et_update.text.toString()
                 if (str.isEmpty()) return
-                val str2: String = currencyInputFilter(str, 6, 2)
+                val str2: String = currencyInputFilter(str, 4, 2)
                 if (str2 != str) {
                     updateDialog.policy_price_layout_update.policy_price_et_update.setText(str2)
                     updateDialog.policy_price_layout_update.policy_price_et_update.setSelection(str2.length)
@@ -438,30 +451,54 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             val dbHandlerPolicies = PolicyHandler(this, null)
             val dbHandlerTags = TagHandler(this, null)
 
+            // Remove old notification
+            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.cancel(policy.notifRC)
+
+            // For request code
+            val minuteForRC = Calendar.getInstance()[Calendar.MINUTE]
+            val hourForRC = Calendar.getInstance()[Calendar.HOUR]
+            val dayForRC = Calendar.getInstance()[Calendar.DAY_OF_YEAR]
+            val yearForRC = Calendar.getInstance()[Calendar.YEAR].toString().takeLast(2)
+
             val tag = dbHandlerTags.getTagId(selectedTag)
             val price =
                 updateDialog.policy_price_layout_update.policy_price_et_update.text.toString()
             val note = updateDialog.etNoteLayoutUpdatePolicy.etNoteUpdatePolicy.text.toString()
             val nextMonth = monthPicked
-            val nextOGDay = dayPicked
+            val notifRC = "$minuteForRC$hourForRC$dayForRC$yearForRC".toInt()
             val nextDay = dayPicked
             val nextYear = yearPicked
             val frequency = selectedFrequency
 
             if (selectedFrequency.isNotEmpty() && price.isNotEmpty() && note.isNotEmpty()) {
                 dbHandlerPolicies.updatePolicy(
-                    PolicyModel(
-                        policy.id,
-                        note,
-                        tag,
-                        price,
-                        nextMonth,
-                        nextOGDay,
-                        nextDay,
-                        nextYear,
-                        "",
-                        frequency
-                    )
+                        PolicyModel(
+                                policy.id,
+                                note,
+                                tag,
+                                price,
+                                nextMonth,
+                                notifRC,
+                                nextDay,
+                                nextYear,
+                                "",
+                                frequency
+                        )
+                )
+
+                // New notification setting
+                val strDate = "${nextDay}-${nextMonth}-${nextYear}"
+                val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                val nextDateMillis = sdf.parse(strDate)?.time
+
+                val intent = Intent(this, PolicyCheckReminder::class.java)
+                val pendingIntent = PendingIntent.getBroadcast(this, notifRC, intent, 0)
+                val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+                alarmManager.set(
+                        AlarmManager.RTC_WAKEUP,
+                        nextDateMillis!! - 86400000,
+                        pendingIntent
                 )
 
                 Toast.makeText(this, "Policy updated.", Toast.LENGTH_LONG).show()
@@ -470,9 +507,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             } else {
                 Toast.makeText(
-                    this,
-                    "Tag, price, frequency or note can't be blank.",
-                    Toast.LENGTH_LONG
+                        this,
+                        "Tag, price, frequency or note can't be blank.",
+                        Toast.LENGTH_LONG
                 )
                     .show()
             }
@@ -495,21 +532,25 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         deleteDialog.setContentView(R.layout.dialog_delete_policy)
         deleteDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+        // Remove old notification
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.cancel(policy.notifRC)
+
         deleteDialog.tvDeletePolicy.setOnClickListener {
             val dbHandler = PolicyHandler(this, null)
             dbHandler.deletePolicy(
-                PolicyModel(
-                    policy.id,
-                    "",
-                    0,
-                    "",
-                    0,
-                    0,
-                    0,
-                    0,
-                    "",
-                    ""
-                )
+                    PolicyModel(
+                            policy.id,
+                            "",
+                            0,
+                            "",
+                            0,
+                            0,
+                            0,
+                            0,
+                            "",
+                            ""
+                    )
             )
 
             Toast.makeText(this, "Policy deleted.", Toast.LENGTH_LONG).show()
@@ -587,37 +628,37 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         when (parent!!.id) {
             R.id.policy_tag_spinner_add -> selectedTag =
-                parent.getItemAtPosition(position).toString()
+                    parent.getItemAtPosition(position).toString()
             R.id.policy_tag_spinner_update -> selectedTag =
-                parent.getItemAtPosition(position).toString()
+                    parent.getItemAtPosition(position).toString()
             R.id.policy_frequency_spinner_add -> selectedFrequency =
-                parent.getItemAtPosition(position).toString()
+                    parent.getItemAtPosition(position).toString()
             R.id.policy_frequency_spinner_update -> selectedFrequency =
-                parent.getItemAtPosition(position).toString()
+                    parent.getItemAtPosition(position).toString()
         }
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
         when (parent!!.id) {
             R.id.policy_tag_spinner_add -> Toast.makeText(
-                this,
-                "Nothing is selected in the tag dropdown.",
-                Toast.LENGTH_SHORT
+                    this,
+                    "Nothing is selected in the tag dropdown.",
+                    Toast.LENGTH_SHORT
             ).show()
             R.id.policy_tag_spinner_update -> Toast.makeText(
-                this,
-                "Nothing is selected in the tag dropdown.",
-                Toast.LENGTH_SHORT
+                    this,
+                    "Nothing is selected in the tag dropdown.",
+                    Toast.LENGTH_SHORT
             ).show()
             R.id.policy_frequency_spinner_add -> Toast.makeText(
-                this,
-                "Nothing is selected in the frequency dropdown.",
-                Toast.LENGTH_SHORT
+                    this,
+                    "Nothing is selected in the frequency dropdown.",
+                    Toast.LENGTH_SHORT
             ).show()
             R.id.policy_frequency_spinner_update -> Toast.makeText(
-                this,
-                "Nothing is selected in the frequency dropdown.",
-                Toast.LENGTH_SHORT
+                    this,
+                    "Nothing is selected in the frequency dropdown.",
+                    Toast.LENGTH_SHORT
             ).show()
         }
     }

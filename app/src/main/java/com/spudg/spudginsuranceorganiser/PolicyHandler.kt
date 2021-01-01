@@ -11,7 +11,7 @@ class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_VERSION = 3
+        private const val DATABASE_VERSION = 4
         private const val DATABASE_NAME = "SIOPolicies.db"
         private const val TABLE_POLICIES = "policies"
 
@@ -20,7 +20,7 @@ class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         private const val KEY_TAG = "tag"
         private const val KEY_PRICE = "amount"
         private const val KEY_NEXT_MONTH = "next_month"
-        private const val KEY_NEXT_OG_DAY = "original_next_day"
+        private const val NOTIF_RC = "notif_rc"
         private const val KEY_NEXT_DAY = "next_day"
         private const val KEY_NEXT_YEAR = "next_year"
         private const val KEY_NEXT_DATE_MS = "next_date_millis"
@@ -29,7 +29,7 @@ class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createPolicyTable =
-            ("CREATE TABLE $TABLE_POLICIES($KEY_ID INTEGER PRIMARY KEY,$KEY_NOTE TEXT,$KEY_TAG INT,$KEY_PRICE TEXT,$KEY_NEXT_MONTH INTEGER,$KEY_NEXT_OG_DAY INTEGER,$KEY_NEXT_DAY INTEGER,$KEY_NEXT_YEAR INTEGER,$KEY_NEXT_DATE_MS TEXT,$KEY_FREQUENCY TEXT)")
+            ("CREATE TABLE $TABLE_POLICIES($KEY_ID INTEGER PRIMARY KEY,$KEY_NOTE TEXT,$KEY_TAG INT,$KEY_PRICE TEXT,$KEY_NEXT_MONTH INTEGER,$NOTIF_RC INTEGER,$KEY_NEXT_DAY INTEGER,$KEY_NEXT_YEAR INTEGER,$KEY_NEXT_DATE_MS TEXT,$KEY_FREQUENCY TEXT)")
         db?.execSQL(createPolicyTable)
     }
 
@@ -48,7 +48,7 @@ class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         values.put(KEY_TAG, policy.tag)
         values.put(KEY_PRICE, policy.price)
         values.put(KEY_NEXT_MONTH, policy.nextMonth)
-        values.put(KEY_NEXT_OG_DAY, policy.nextOGDay)
+        values.put(NOTIF_RC, policy.notifRC)
         values.put(KEY_NEXT_DAY, policy.nextDay)
         values.put(KEY_NEXT_YEAR, policy.nextYear)
         values.put(KEY_NEXT_DATE_MS, nextDateMillis)
@@ -69,7 +69,7 @@ class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         values.put(KEY_TAG, policy.tag)
         values.put(KEY_PRICE, policy.price)
         values.put(KEY_NEXT_MONTH, policy.nextMonth)
-        values.put(KEY_NEXT_OG_DAY, policy.nextOGDay)
+        values.put(NOTIF_RC, policy.notifRC)
         values.put(KEY_NEXT_DAY, policy.nextDay)
         values.put(KEY_NEXT_YEAR, policy.nextYear)
         values.put(KEY_NEXT_DATE_MS, nextDateMillis)
@@ -100,7 +100,7 @@ class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         var price: String
         var note: String
         var nextMonth: Int
-        var nextOGDay: Int
+        var notifRC: Int
         var nextDay: Int
         var nextYear: Int
         var nextDateMillis: String
@@ -113,7 +113,7 @@ class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 price = cursor.getString(cursor.getColumnIndex(KEY_PRICE))
                 note = cursor.getString(cursor.getColumnIndex(KEY_NOTE))
                 nextMonth = cursor.getInt(cursor.getColumnIndex(KEY_NEXT_MONTH))
-                nextOGDay = cursor.getInt(cursor.getColumnIndex(KEY_NEXT_OG_DAY))
+                notifRC = cursor.getInt(cursor.getColumnIndex(NOTIF_RC))
                 nextDay = cursor.getInt(cursor.getColumnIndex(KEY_NEXT_DAY))
                 nextYear = cursor.getInt(cursor.getColumnIndex(KEY_NEXT_YEAR))
                 nextDateMillis = cursor.getString(cursor.getColumnIndex(KEY_NEXT_DATE_MS))
@@ -124,7 +124,7 @@ class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                     price = price,
                     note = note,
                     nextMonth = nextMonth,
-                    nextOGDay = nextOGDay,
+                    notifRC = notifRC,
                     nextDay = nextDay,
                     nextYear = nextYear,
                     nextDateMillis = nextDateMillis,

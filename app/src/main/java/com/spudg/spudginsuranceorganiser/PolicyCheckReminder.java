@@ -15,8 +15,8 @@ public class PolicyCheckReminder extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "checkPolicies")
                 .setSmallIcon(R.drawable.notification_icon)
-                .setContentTitle("Don't forget about your insurance policies!")
-                .setContentText("Have you checked your policies recently? Tap here to view or update your current policies.")
+                .setContentTitle("A policy is ending in one day!")
+                .setContentText("One of your policies is expiring in a day. Tap here to view or update.")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0));
 
