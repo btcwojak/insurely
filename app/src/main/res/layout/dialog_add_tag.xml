@@ -33,7 +33,7 @@
             android:fontFamily="@font/open_sans_light"
             android:hint="@string/name"
             android:inputType="text"
-            android:maxLength="14"
+            android:maxLength="15"
             android:maxLines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
