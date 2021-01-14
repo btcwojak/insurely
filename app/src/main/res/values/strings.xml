@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">Spudg Insurance Organiser</string>
+    <string name="app_name">Insurely</string>
     <string name="copyright">Copyright © 2020 Spudg Studios</string>
     <string name="all_rights_reserved">All rights reserved. By using this application, you agree that the creator of this application is not responsible for any losses or damages.</string>
     <string name="licensed_apache_2_0">Licensed under the Apache License 2.0</string>
     <string name="larswerkman_holocolorpicker">larswerkman/HoloColorPicker</string>
     <string name="google_material_design_icons">google/material-design-icons</string>
     <string name="steve_matteson_open_sans_light_font">Steve Matteson / Open Sans Light font</string>
-    <string name="about_sio">About SIO</string>
-    <string name="sio_logo">SIO Logo</string>
+    <string name="about_insurely">About Insurely</string>
+    <string name="insurely_logo">Insurely Logo</string>
     <string name="v1_0_0_made_by_spudg_studios">v1.0.0, made by Spudg Studios</string>
-    <string name="sio_about_info">Spudg Insurance Organiser is a free application designed to make the chore of keeping track of insurance policies easier. Get notifications to remind you when a policy is approaching expiry and you can shop around and get the best renewal price - instead of letting it roll over and potentially paying more than you need to.\n\nSpudg Studios is currently a one-man development studio and this is an early version of the application, so if you have any suggestions or you\'ve found a bug, please send an email below!</string>
+    <string name="insurely_about_info">Insurely is a free application designed to make the chore of keeping track of insurance policies easier. Get notifications to remind you when a policy is approaching expiry and you can shop around and get the best renewal price - instead of letting it roll over and potentially paying more than you need to.\n\nSpudg Studios is currently a one-man development studio and this is an early version of the application, so if you have any suggestions or you\'ve found a bug, please send an email below!</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="rate_on_play_store">Rate on Play Store</string>
     <string name="send_an_email">Send an email</string>
@@ -30,7 +30,7 @@
     <string name="delete_tag">Delete Tag</string>
     <string name="delete">Delete</string>
     <string name="terms_of_use">Terms of Use</string>
-    <string name="spudg_insurance_organiser">Spudg Insurance Organiser</string>
+    <string name="insurely">Insurely</string>
     <string name="done">Done</string>
     <string name="update_policy">Update policy</string>
     <string name="price">Price</string>

@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Spudg Insurance Organiser"
+rootProject.name = "Insurely"

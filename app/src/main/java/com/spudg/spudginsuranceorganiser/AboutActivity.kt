@@ -71,7 +71,7 @@ class AboutActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "message/rfc822"
         intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("spudgstudios@gmail.com"))
-        intent.putExtra(Intent.EXTRA_SUBJECT, "SIO - Suggestion / bug report")
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Insurely - Suggestion / bug report")
 
         try {
             startActivity(Intent.createChooser(intent, "Send mail..."))

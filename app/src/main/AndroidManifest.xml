@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/SpudgIO">
+        android:theme="@style/Insurely">
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
@@ -22,15 +22,15 @@
         <activity
             android:name=".TagActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SpudgIO" />
+            android:theme="@style/Insurely" />
         <activity
             android:name=".AboutActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SpudgIO" />
+            android:theme="@style/Insurely" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SpudgIO" />
+            android:theme="@style/Insurely" />
 
         <receiver android:name=".PolicyCheckReminder" />
     </application>

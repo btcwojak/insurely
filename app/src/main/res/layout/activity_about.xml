@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/open_sans_light"
-                android:text="@string/about_sio"
+                android:text="@string/about_insurely"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -87,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@mipmap/ic_launcher"
-                        android:contentDescription="@string/sio_logo" />
+                        android:contentDescription="@string/insurely_logo" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
                             android:layout_gravity="start"
                             android:fontFamily="@font/open_sans_light"
                             android:padding="6dp"
-                            android:text="@string/spudg_insurance_organiser"
+                            android:text="@string/insurely"
                             android:textColor="@android:color/black"
                             android:textSize="20sp" />
 
@@ -130,7 +130,7 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:paddingLeft="25dp"
                     android:paddingRight="25dp"
-                    android:text="@string/sio_about_info"
+                    android:text="@string/insurely_about_info"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toLeftOf="parent"
