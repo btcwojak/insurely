@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.spudg.spudginsuranceorganiser">
+    package="com.spudg.insurely">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Insurely">
         <activity
-            android:name=".SplashActivity"
+            android:name="com.spudg.insurely.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Splash">
             <intent-filter>
@@ -20,19 +20,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TagActivity"
+            android:name="com.spudg.insurely.TagActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Insurely" />
         <activity
-            android:name=".AboutActivity"
+            android:name="com.spudg.insurely.AboutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Insurely" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.spudg.insurely.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Insurely" />
 
-        <receiver android:name=".PolicyCheckReminder" />
+        <receiver android:name="com.spudg.insurely.PolicyCheckReminder" />
     </application>
 
 </manifest>

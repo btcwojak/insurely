@@ -1,4 +1,4 @@
-package com.spudg.spudginsuranceorganiser;
+package com.spudg.insurely;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;

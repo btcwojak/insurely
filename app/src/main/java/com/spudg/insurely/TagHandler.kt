@@ -1,4 +1,4 @@
-package com.spudg.spudginsuranceorganiser
+package com.spudg.insurely
 
 import android.content.ContentValues
 import android.content.Context

@@ -1,4 +1,4 @@
-package com.spudg.spudginsuranceorganiser
+package com.spudg.insurely
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

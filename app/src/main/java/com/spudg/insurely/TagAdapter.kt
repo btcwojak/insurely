@@ -1,4 +1,4 @@
-package com.spudg.spudginsuranceorganiser
+package com.spudg.insurely
 
 import android.content.Context
 import android.view.LayoutInflater
