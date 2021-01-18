@@ -571,19 +571,19 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val allCategories = dbHandler.getAllTagTitles()
 
         if (!allCategories.contains("Vehicle Insurance")) {
-            dbHandler.addCategory(TagModel(0, "Vehicle Insurance", "-16711861"))
+            dbHandler.addTag(TagModel(0, "Vehicle Insurance", "-16711861"))
         }
         if (!allCategories.contains("Home Contents Insurance")) {
-            dbHandler.addCategory(TagModel(0, "Home Contents Insurance", "-16774657"))
+            dbHandler.addTag(TagModel(0, "Home Contents Insurance", "-16774657"))
         }
         if (!allCategories.contains("Home Building Insurance")) {
-            dbHandler.addCategory(TagModel(0, "Home Building Insurance", "-65497"))
+            dbHandler.addTag(TagModel(0, "Home Building Insurance", "-65497"))
         }
         if (!allCategories.contains("Life Insurance")) {
-            dbHandler.addCategory(TagModel(0, "Life Insurance", "-29696"))
+            dbHandler.addTag(TagModel(0, "Life Insurance", "-29696"))
         }
         if (!allCategories.contains("Other Insurance")) {
-            dbHandler.addCategory(TagModel(0, "Other Insurance", "-65281"))
+            dbHandler.addTag(TagModel(0, "Other Insurance", "-65281"))
         }
 
         dbHandler.close()

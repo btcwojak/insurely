@@ -66,7 +66,7 @@ class TagActivity : AppCompatActivity() {
             val dbHandler = TagHandler(this, null)
 
             if (title.isNotEmpty() && colour.isNotEmpty()) {
-                dbHandler.addCategory(TagModel(0, name, colour))
+                dbHandler.addTag(TagModel(0, name, colour))
                 if (Constants.TAG_UNIQUE_TITLE == 1) {
                     Toast.makeText(this, "Tag added.", Toast.LENGTH_LONG).show()
                     setUpTagList()

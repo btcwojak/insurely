@@ -29,7 +29,7 @@ class TagHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         onCreate(db)
     }
 
-    fun addCategory(tag: TagModel) {
+    fun addTag(tag: TagModel) {
         val values = ContentValues()
         values.put(KEY_NAME, tag.name)
         values.put(KEY_COLOUR, tag.colour)
