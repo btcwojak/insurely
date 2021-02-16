@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.tag_row.view.*
 
 class TagAdapter(private val context: Context, private val items: ArrayList<TagModel>) :
-    RecyclerView.Adapter<TagAdapter.ViewHolder>() {
+        RecyclerView.Adapter<TagAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameView = view.name_tag!!
@@ -20,7 +20,7 @@ class TagAdapter(private val context: Context, private val items: ArrayList<TagM
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.tag_row, parent, false)
+                LayoutInflater.from(context).inflate(R.layout.tag_row, parent, false)
         )
     }
 

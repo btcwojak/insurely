@@ -7,29 +7,29 @@ class Constants {
         var TAG_UNIQUE_TITLE: Int = 0
 
         var MONTHS_SHORT_ARRAY: Array<String> = arrayOf(
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec"
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec"
         )
 
         var RECURRING_FREQUENCIES: Array<String> = arrayOf(
-            "Weekly",
-            "Bi-weekly",
-            "Tri-weekly",
-            "Four-weekly",
-            "Monthly",
-            "Bi-monthly",
-            "Quarterly",
-            "Yearly",
+                "Weekly",
+                "Bi-weekly",
+                "Tri-weekly",
+                "Four-weekly",
+                "Monthly",
+                "Bi-monthly",
+                "Quarterly",
+                "Yearly",
         )
 
         fun getShortMonth(month: Int): String {

@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             val name = "Check Policy Reminder"
             val description =
-                "Channel to remind users to check current insurance policies for expiry"
+                    "Channel to remind users to check current insurance policies for expiry"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel("checkPolicies", name, importance)
             channel.description = description
@@ -299,7 +299,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             } else {
                 Toast.makeText(this, "Price or note can't be blank.", Toast.LENGTH_LONG)
-                    .show()
+                        .show()
             }
 
             dbHandlerPolicies.close()
@@ -493,7 +493,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             val tag = dbHandlerTags.getTagId(selectedTag)
             val price =
-                updateDialog.policy_price_layout_update.policy_price_et_update.text.toString()
+                    updateDialog.policy_price_layout_update.policy_price_et_update.text.toString()
             val note = updateDialog.etNoteLayoutUpdatePolicy.etNoteUpdatePolicy.text.toString()
             val nextMonth = monthPicked
             val notifRC = "$minuteForRC$hourForRC$dayForRC$yearForRC".toInt()
@@ -541,7 +541,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         "Tag, price, frequency or note can't be blank.",
                         Toast.LENGTH_LONG
                 )
-                    .show()
+                        .show()
             }
 
             dbHandlerPolicies.close()

@@ -147,11 +147,11 @@ class TagActivity : AppCompatActivity() {
             val dbHandlerPolicies = PolicyHandler(this, null)
             dbHandlerTags.deleteTag(TagModel(tag.id, "", ""))
             dbHandlerPolicies.changePolicyTagDueToTagDeletion(
-                TagModel(
-                    tag.id,
-                    "",
-                    ""
-                )
+                    TagModel(
+                            tag.id,
+                            "",
+                            ""
+                    )
             )
 
             Toast.makeText(this, "Tag deleted.", Toast.LENGTH_LONG).show()

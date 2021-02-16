@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 class TagHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
-    SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
+        SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 
     companion object {
         private const val DATABASE_VERSION = 1
@@ -20,7 +20,7 @@ class TagHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createTagsTable =
-            ("CREATE TABLE $TABLE_TAGS($KEY_ID INTEGER PRIMARY KEY,$KEY_NAME TEXT,$KEY_COLOUR TEXT)")
+                ("CREATE TABLE $TABLE_TAGS($KEY_ID INTEGER PRIMARY KEY,$KEY_NAME TEXT,$KEY_COLOUR TEXT)")
         db?.execSQL(createTagsTable)
     }
 
@@ -72,19 +72,19 @@ class TagHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         if (Constants.TAG_UNIQUE_TITLE == 0) {
             val cursor =
-                dbForSearch.rawQuery(
-                    "SELECT * FROM $TABLE_TAGS WHERE _id = ${tag.id}",
-                    null
-                )
+                    dbForSearch.rawQuery(
+                            "SELECT * FROM $TABLE_TAGS WHERE _id = ${tag.id}",
+                            null
+                    )
             if (cursor.moveToFirst()) {
                 val oldName = cursor.getString(cursor.getColumnIndex(KEY_NAME))
                 val newName = tag.name
                 if (oldName == newName) {
                     dbForUpdate.update(
-                        TABLE_TAGS,
-                        values,
-                        KEY_ID + "=" + tag.id,
-                        null
+                            TABLE_TAGS,
+                            values,
+                            KEY_ID + "=" + tag.id,
+                            null
                     )
                     Constants.TAG_UNIQUE_TITLE = 1
                 } else {
@@ -122,9 +122,9 @@ class TagHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 name = cursor.getString(cursor.getColumnIndex(KEY_NAME))
                 colour = cursor.getString(cursor.getColumnIndex(KEY_COLOUR))
                 val tag = TagModel(
-                    id = id,
-                    name = name,
-                    colour = colour,
+                        id = id,
+                        name = name,
+                        colour = colour,
                 )
                 list.add(tag)
             } while (cursor.moveToNext())
@@ -160,7 +160,7 @@ class TagHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val db = this.readableDatabase
 
         val cursor =
-            db.rawQuery("SELECT * FROM $TABLE_TAGS WHERE $KEY_ID = '$tagId'", null)
+                db.rawQuery("SELECT * FROM $TABLE_TAGS WHERE $KEY_ID = '$tagId'", null)
 
         val colour: Int = if (cursor.moveToFirst()) {
             cursor.getString(cursor.getColumnIndex(KEY_COLOUR)).toInt()
@@ -179,7 +179,7 @@ class TagHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val db = this.readableDatabase
 
         val cursor =
-            db.rawQuery("SELECT * FROM $TABLE_TAGS WHERE $KEY_NAME = '$tagTitle'", null)
+                db.rawQuery("SELECT * FROM $TABLE_TAGS WHERE $KEY_NAME = '$tagTitle'", null)
 
         val id: Int = if (cursor.moveToFirst()) {
             cursor.getInt(cursor.getColumnIndex(KEY_ID))
@@ -198,7 +198,7 @@ class TagHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val db = this.readableDatabase
 
         val cursor =
-            db.rawQuery("SELECT * FROM $TABLE_TAGS WHERE $KEY_ID = $tagId", null)
+                db.rawQuery("SELECT * FROM $TABLE_TAGS WHERE $KEY_ID = $tagId", null)
 
         val name: String = if (cursor.moveToFirst()) {
             cursor.getString(cursor.getColumnIndex(KEY_NAME))

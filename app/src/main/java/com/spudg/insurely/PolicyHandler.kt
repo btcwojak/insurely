@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
-    SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
+        SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 
     companion object {
         private const val DATABASE_VERSION = 4
@@ -29,7 +29,7 @@ class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createPolicyTable =
-            ("CREATE TABLE $TABLE_POLICIES($KEY_ID INTEGER PRIMARY KEY,$KEY_NOTE TEXT,$KEY_TAG INT,$KEY_PRICE TEXT,$KEY_NEXT_MONTH INTEGER,$NOTIF_RC INTEGER,$KEY_NEXT_DAY INTEGER,$KEY_NEXT_YEAR INTEGER,$KEY_NEXT_DATE_MS TEXT,$KEY_FREQUENCY TEXT)")
+                ("CREATE TABLE $TABLE_POLICIES($KEY_ID INTEGER PRIMARY KEY,$KEY_NOTE TEXT,$KEY_TAG INT,$KEY_PRICE TEXT,$KEY_NEXT_MONTH INTEGER,$NOTIF_RC INTEGER,$KEY_NEXT_DAY INTEGER,$KEY_NEXT_YEAR INTEGER,$KEY_NEXT_DATE_MS TEXT,$KEY_FREQUENCY TEXT)")
         db?.execSQL(createPolicyTable)
     }
 
@@ -91,8 +91,8 @@ class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val list = ArrayList<PolicyModel>()
         val db = this.readableDatabase
         val cursor = db.rawQuery(
-            "SELECT * FROM $TABLE_POLICIES",
-            null
+                "SELECT * FROM $TABLE_POLICIES",
+                null
         )
 
         var id: Int
@@ -119,16 +119,16 @@ class PolicyHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 nextDateMillis = cursor.getString(cursor.getColumnIndex(KEY_NEXT_DATE_MS))
                 frequency = cursor.getString(cursor.getColumnIndex(KEY_FREQUENCY))
                 val policy = PolicyModel(
-                    id = id,
-                    tag = tag,
-                    price = price,
-                    note = note,
-                    nextMonth = nextMonth,
-                    notifRC = notifRC,
-                    nextDay = nextDay,
-                    nextYear = nextYear,
-                    nextDateMillis = nextDateMillis,
-                    frequency = frequency
+                        id = id,
+                        tag = tag,
+                        price = price,
+                        note = note,
+                        nextMonth = nextMonth,
+                        notifRC = notifRC,
+                        nextDay = nextDay,
+                        nextYear = nextYear,
+                        nextDateMillis = nextDateMillis,
+                        frequency = frequency
                 )
                 list.add(policy)
             } while (cursor.moveToNext())

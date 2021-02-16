@@ -15,7 +15,7 @@ import java.util.*
 import kotlin.math.ceil
 
 class PolicyAdapter(private val context: Context, private val items: ArrayList<PolicyModel>) :
-    RecyclerView.Adapter<PolicyAdapter.ViewHolder>() {
+        RecyclerView.Adapter<PolicyAdapter.ViewHolder>() {
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -48,7 +48,7 @@ class PolicyAdapter(private val context: Context, private val items: ArrayList<P
         holder.dateView.text = holder.dateView.context.getString(R.string.policy_expires_date, date.toString())
 
         val remainingDays = ceil((((Calendar.getInstance().timeInMillis.toString()
-            .toLong() - policy.nextDateMillis.toLong()) / 86400000F) * -1F)).toInt()
+                .toLong() - policy.nextDateMillis.toLong()) / 86400000F) * -1F)).toInt()
 
         val remainingDaysFormatted = daysFormatter.format(remainingDays)
 
