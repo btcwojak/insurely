@@ -89,7 +89,7 @@ class PolicyAdapter(private val context: Context, private val items: ArrayList<P
             if (remainingDays == -1) {
                 holder.remainingDaysView.text = holder.remainingDaysView.context.getString(R.string.day_overdue, negativeRemainingDaysFormatted)
             } else {
-                holder.remainingDaysView.text = holder.remainingDaysView.context.getString(R.string.day_overdue, negativeRemainingDaysFormatted)
+                holder.remainingDaysView.text = holder.remainingDaysView.context.getString(R.string.days_overdue, negativeRemainingDaysFormatted)
             }
         } else {
             holder.remainingDaysView.background = ContextCompat.getDrawable(
