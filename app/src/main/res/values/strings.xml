@@ -46,4 +46,12 @@
     <string name="insurance_provider_placeholder">Admiral insurance</string>
     <string name="renewal_time_placeholder">Up for renewal in 285 days</string>
     <string name="default_tag">Default tag</string>
+    <string name="version_by_ss">v%1$s, made by Spudg Studios</string>
+    <string name="day_month_year">%1$s %2$s %3$s</string>
+    <string name="policy_expires_date">Policy expires on %1$s</string>
+    <string name="days_until_renewal">%1$s days until renewal</string>
+    <string name="day_until_renewal">%1$s day until renewal</string>
+    <string name="expires_today">Expires today</string>
+    <string name="day_overdue">%1$s day overdue</string>
+    <string name="days_overdue">%1$s days overdue</string>
 </resources>

@@ -11,13 +11,11 @@ class TagAdapter(private val context: Context, private val items: ArrayList<TagM
     RecyclerView.Adapter<TagAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tagItem = view.tag_row_layout!!
         val nameView = view.name_tag!!
         val colourView = view.colour_tag!!
         val updateView = view.update_tag!!
         val deleteView = view.delete_tag!!
         val defaultView = view.default_tag!!
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

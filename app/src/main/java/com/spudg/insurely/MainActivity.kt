@@ -110,7 +110,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         var yearPicked = Calendar.getInstance()[Calendar.YEAR]
 
         addDialog.change_date_add_policy.text =
-            "$dayPicked ${Constants.getShortMonth(monthPicked)} $yearPicked"
+                getString(
+                        R.string.day_month_year,
+                        dayPicked.toString(),
+                        Constants.getShortMonth(monthPicked),
+                        yearPicked.toString()
+                )
 
         addDialog.change_date_add_policy.setOnClickListener {
             val changeDateDialog = Dialog(this, R.style.Theme_Dialog)
@@ -180,7 +185,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             changeDateDialog.submit_dmy.setOnClickListener {
                 addDialog.change_date_add_policy.text =
-                    "$dayPicked ${Constants.getShortMonth(monthPicked)} $yearPicked"
+                        getString(
+                                R.string.day_month_year,
+                                dayPicked.toString(),
+                                Constants.getShortMonth(monthPicked),
+                                yearPicked.toString()
+                        )
                 changeDateDialog.dismiss()
             }
 
@@ -193,7 +203,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 monthPicked = Calendar.getInstance()[Calendar.MONTH] + 1
                 yearPicked = Calendar.getInstance()[Calendar.YEAR]
                 addDialog.change_date_add_policy.text =
-                    "$dayPicked ${Constants.getShortMonth(monthPicked)} $yearPicked"
+                        getString(
+                                R.string.day_month_year,
+                                dayPicked.toString(),
+                                Constants.getShortMonth(monthPicked),
+                                yearPicked.toString()
+                        )
                 changeDateDialog.dismiss()
             }
 
@@ -308,7 +323,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         var yearPicked = policy.nextYear
 
         updateDialog.change_date_update_policy.text =
-            "$dayPicked ${Constants.getShortMonth(monthPicked)} $yearPicked"
+                getString(
+                        R.string.day_month_year,
+                        dayPicked.toString(),
+                        Constants.getShortMonth(monthPicked),
+                        yearPicked.toString()
+                )
 
         updateDialog.change_date_update_policy.setOnClickListener {
             val changeDateDialog = Dialog(this, R.style.Theme_Dialog)
@@ -378,7 +398,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             changeDateDialog.submit_dmy.setOnClickListener {
                 updateDialog.change_date_update_policy.text =
-                    "$dayPicked ${Constants.getShortMonth(monthPicked)} $yearPicked"
+                        getString(
+                                R.string.day_month_year,
+                                dayPicked.toString(),
+                                Constants.getShortMonth(monthPicked),
+                                yearPicked.toString()
+                        )
                 changeDateDialog.dismiss()
             }
 
@@ -393,7 +418,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 monthPicked = policy.nextMonth
                 yearPicked = policy.nextYear
                 updateDialog.change_date_update_policy.text =
-                    "$dayPicked ${Constants.getShortMonth(monthPicked)} $yearPicked"
+                        getString(
+                                R.string.day_month_year,
+                                dayPicked.toString(),
+                                Constants.getShortMonth(monthPicked),
+                                yearPicked.toString()
+                        )
                 changeDateDialog.dismiss()
             }
 
@@ -598,8 +628,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
 
-    fun currencyInputFilter(str: String, MAX_BEFORE_POINT: Int, MAX_DECIMAL: Int): String {
-        var str = str
+    fun currencyInputFilter(string: String, MAX_BEFORE_POINT: Int, MAX_DECIMAL: Int): String {
+        var str = string
         if (str[0] == '.') str = "0$str"
         val max = str.length
         var rFinal = ""

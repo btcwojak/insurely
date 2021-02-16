@@ -19,7 +19,6 @@ class PolicyAdapter(private val context: Context, private val items: ArrayList<P
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val policyItem = view.policy_row_layout!!
         val mainRowItem = view.policy_main_row_layout!!
         val tagView = view.policy_tag!!
         val priceView = view.policy_price!!
@@ -27,7 +26,6 @@ class PolicyAdapter(private val context: Context, private val items: ArrayList<P
         val dateView = view.policy_next_date!!
         val colourView = view.tag_colour_policy!!
         val remainingDaysView = view.policy_remaining_days!!
-        val rowLine = view.row_line!!
     }
 
 
@@ -47,7 +45,7 @@ class PolicyAdapter(private val context: Context, private val items: ArrayList<P
         val sdfDayDate = SimpleDateFormat("EEEE d MMM yyyy", Locale.getDefault())
         val date = sdfDayDate.format(policy.nextDateMillis.toLong())
 
-        holder.dateView.text = "Policy expires on $date"
+        holder.dateView.text = holder.dateView.context.getString(R.string.policy_expires_date, date.toString())
 
         val remainingDays = ceil((((Calendar.getInstance().timeInMillis.toString()
             .toLong() - policy.nextDateMillis.toLong()) / 86400000F) * -1F)).toInt()
@@ -57,58 +55,49 @@ class PolicyAdapter(private val context: Context, private val items: ArrayList<P
         val negativeRemainingDaysFormatted = daysFormatter.format(-remainingDays)
 
         if (remainingDays in 8..30) {
-            holder.remainingDaysView.setBackgroundDrawable(
-                    ContextCompat.getDrawable(
-                            context,
-                            R.drawable.policy_expiry_amber_background
-                    )
+            holder.remainingDaysView.background = ContextCompat.getDrawable(
+                    context,
+                    R.drawable.policy_expiry_amber_background
             )
             holder.remainingDaysView.setTextColor(getColor(context, android.R.color.black))
-            holder.remainingDaysView.text = "$remainingDaysFormatted days until renewal"
+            holder.remainingDaysView.text = holder.remainingDaysView.context.getString(R.string.days_until_renewal, remainingDaysFormatted.toString())
+
         } else if (remainingDays in 1..7) {
-            holder.remainingDaysView.setBackgroundDrawable(
-                    ContextCompat.getDrawable(
-                            context,
-                            R.drawable.policy_expiry_red_background
-                    )
+            holder.remainingDaysView.background = ContextCompat.getDrawable(
+                    context,
+                    R.drawable.policy_expiry_red_background
             )
             holder.remainingDaysView.setTextColor(getColor(context, android.R.color.black))
             if (remainingDays == 1) {
-                holder.remainingDaysView.text = "$remainingDaysFormatted day until renewal"
+                holder.remainingDaysView.text = holder.remainingDaysView.context.getString(R.string.day_until_renewal, remainingDaysFormatted.toString())
             } else {
-                holder.remainingDaysView.text = "$remainingDaysFormatted days until renewal"
+                holder.remainingDaysView.text = holder.remainingDaysView.context.getString(R.string.days_until_renewal, remainingDaysFormatted.toString())
             }
         } else if (remainingDays == 0) {
-            holder.remainingDaysView.setBackgroundDrawable(
-                    ContextCompat.getDrawable(
-                            context,
-                            R.drawable.policy_expiry_black_background
-                    )
+            holder.remainingDaysView.background = ContextCompat.getDrawable(
+                    context,
+                    R.drawable.policy_expiry_black_background
             )
             holder.remainingDaysView.setTextColor(getColor(context, android.R.color.white))
-            holder.remainingDaysView.text = "Expires today"
+            holder.remainingDaysView.text = holder.remainingDaysView.context.getString(R.string.expires_today)
         } else if (remainingDays < 0) {
-            holder.remainingDaysView.setBackgroundDrawable(
-                    ContextCompat.getDrawable(
-                            context,
-                            R.drawable.policy_expiry_black_background
-                    )
+            holder.remainingDaysView.background = ContextCompat.getDrawable(
+                    context,
+                    R.drawable.policy_expiry_black_background
             )
             holder.remainingDaysView.setTextColor(getColor(context, android.R.color.white))
             if (remainingDays == -1) {
-                holder.remainingDaysView.text = "$negativeRemainingDaysFormatted day overdue"
+                holder.remainingDaysView.text = holder.remainingDaysView.context.getString(R.string.day_overdue, negativeRemainingDaysFormatted)
             } else {
-                holder.remainingDaysView.text = "$negativeRemainingDaysFormatted days overdue"
+                holder.remainingDaysView.text = holder.remainingDaysView.context.getString(R.string.day_overdue, negativeRemainingDaysFormatted)
             }
         } else {
-            holder.remainingDaysView.setBackgroundDrawable(
-                    ContextCompat.getDrawable(
-                            context,
-                            R.drawable.policy_expiry_green_background
-                    )
+            holder.remainingDaysView.background = ContextCompat.getDrawable(
+                    context,
+                    R.drawable.policy_expiry_green_background
             )
             holder.remainingDaysView.setTextColor(getColor(context, android.R.color.black))
-            holder.remainingDaysView.text = "$remainingDaysFormatted days until renewal"
+            holder.remainingDaysView.text = holder.remainingDaysView.context.getString(R.string.days_until_renewal, remainingDaysFormatted.toString())
         }
 
         if (context is MainActivity) {
