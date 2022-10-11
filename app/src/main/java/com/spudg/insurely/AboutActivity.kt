@@ -37,16 +37,11 @@ class AboutActivity : AppCompatActivity() {
         rate_btn.setOnClickListener {
             rate()
         }
-
-        email_btn.setOnClickListener {
-            email()
-        }
-
     }
 
     private fun privacyPolicy() {
         val url =
-                "https://docs.google.com/document/d/1KQ63hICFTXR5axmk9rRRMNOUseocSZQxOR0ck6z14UI/edit?usp=sharing"
+                "https://docs.google.com/document/d/12x1U4WxVJPA8Gr0OA0qq-8ofetMnXdxoDLvqP80hU3g"
         val i = Intent(Intent.ACTION_VIEW)
         i.data = Uri.parse(url)
         startActivity(i)
@@ -63,25 +58,6 @@ class AboutActivity : AppCompatActivity() {
         }
 
         termsOfUseDialog.show()
-
-    }
-
-    private fun email() {
-
-        val intent = Intent(Intent.ACTION_SEND)
-        intent.type = "message/rfc822"
-        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("spudgstudios@gmail.com"))
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Insurely - Suggestion / bug report")
-
-        try {
-            startActivity(Intent.createChooser(intent, "Send mail..."))
-        } catch (ex: ActivityNotFoundException) {
-            Toast.makeText(
-                    this,
-                    "There are no email clients installed.",
-                    Toast.LENGTH_SHORT
-            ).show()
-        }
 
     }
 

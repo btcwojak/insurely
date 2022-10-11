@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Insurely</string>
-    <string name="copyright">Copyright © 2020 Spudg Studios</string>
+    <string name="copyright">Copyright © 2022 spudg</string>
     <string name="all_rights_reserved">All rights reserved. By using this application, you agree that the creator of this application is not responsible for any losses or damages.</string>
     <string name="licensed_apache_2_0">Licensed under the Apache License 2.0</string>
     <string name="larswerkman_holocolorpicker">larswerkman/HoloColorPicker</string>
@@ -8,8 +8,8 @@
     <string name="steve_matteson_open_sans_light_font">Steve Matteson / Open Sans Light font</string>
     <string name="about_insurely">About Insurely</string>
     <string name="insurely_logo">Insurely Logo</string>
-    <string name="v1_0_0_made_by_spudg_studios">v1.0.0, made by Spudg Studios</string>
-    <string name="insurely_about_info">Insurely is a free application designed to make the chore of keeping track of insurance policies easier. Get notifications to remind you when a policy is approaching expiry and you can shop around and get the best renewal price - instead of letting it roll over and potentially paying more than you need to.\n\nSpudg Studios is currently a one-man development studio and this is an early version of the application, so if you have any suggestions or you\'ve found a bug, please send an email below!</string>
+    <string name="v1_0_0_made_by_spudg">v1.0.0, made by spudg</string>
+    <string name="insurely_about_info">Insurely is a free application designed to make the chore of keeping track of insurance policies easier. Get notifications to remind you when a policy is approaching expiry and you can shop around and get the best renewal price - instead of letting it roll over and potentially paying more than you need to.\n\nspudg is currently a one-man development studio and this is an early version of the application, so if you have any suggestions or you\'ve found a bug, please leave a review on Google Play!</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="rate_on_play_store">Rate on Play Store</string>
     <string name="send_an_email">Send an email</string>
@@ -46,7 +46,7 @@
     <string name="insurance_provider_placeholder">Admiral insurance</string>
     <string name="renewal_time_placeholder">Up for renewal in 285 days</string>
     <string name="default_tag">Default tag</string>
-    <string name="version_by_ss">v%1$s, made by Spudg Studios</string>
+    <string name="version_by_ss">v%1$s, made by spudg</string>
     <string name="day_month_year">%1$s %2$s %3$s</string>
     <string name="policy_expires_date">Policy expires on %1$s</string>
     <string name="days_until_renewal">%1$s days until renewal</string>
